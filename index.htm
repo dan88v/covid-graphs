@@ -3,7 +3,7 @@
 <html lang="it">
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>COVID-19 - Situazione Italiana - Graphs</title>
   <meta name="author" content="Daniele Trevisanello">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
@@ -29,20 +29,34 @@
   <section>
     <div class="row">
       <div class="col-sm-3 text-center">
+
         <p class="lead" style="color:#3ba8d5"><b>Isolamento Domiciliare</b><br>
-        <span class="totaleIsolamentoDomiciliare h1"></span></p>
+        <span class="totaleIsolamentoDomiciliare h1"></span><br>
+        <small><b><span class="deltaTotaleIsolamentoDomiciliare"></span></b></small></p>
+
         <p class="lead" style="color:#d5753b"><b>Terapia Intensiva</b><br>
-        <span class="totaleTerapiaIntensiva h1"></span></p>
+        <span class="totaleTerapiaIntensiva h1"></span><br>
+        <small><b><span class="deltaTotaleTerapiaIntensiva"></span></b></small></p>
+
         <p class="lead" style="color:#d5c53b"><b>Ricoverati</b><br>
-        <span class="totaleRicoverati h1"></span></p>
+        <span class="totaleRicoverati h1"></span><br>
+        <small><b><span class="deltaTotaleRicoverati"></span></b></small></p>
+
       </div>
       <div class="col-sm-3 text-center">
+
         <p class="lead" style="color:#3bd55f"><b>Guariti</b><br>
-        <span class="totaleGuariti h1"></span></p>
+        <span class="totaleGuariti h1"></span><br>
+        <small><b><span class="deltaTotaleGuariti"></span></b></small></p>
+
         <p class="lead" style="color:#d53b3b"><b>Deceduti</b><br>
-        <span class="totaleDeceduti h1"></span></p>
+        <span class="totaleDeceduti h1"></span><br>
+        <small><b><span class="deltaTotaleDeceduti"></span></b></small></p>
+
         <p class="lead text-secondary"><b>Tamponi</b><br>
-        <span class="totaleTamponi h1"></span></p>
+        <span class="totaleTamponi h1"></span><br>
+        <small><b><span class="deltaTotaleTamponi"></span></b></small></p>
+
       </div>
       <div class="col-sm-6">
         <canvas id="doughnut"></canvas>
@@ -51,32 +65,91 @@
   </section>
   <hr class="py-4">
   <section>
-    <h4 class="pb-2 text-center">Situazione Nazionale Complessiva</h3>
+    <h4 class="pb-2 text-center">Situazione Nazionale Complessiva</h4>
     <canvas id="situazioneNazionaleChart"></canvas>
     <hr class="py-4">
-    <h4 class="pb-2 text-center">Nuovi Attualmente Positivi vs Tamponi Effettuati per Giorno</h3>
+    <h4 class="pb-2 text-center">Nuovi Attualmente Positivi vs Tamponi Effettuati per Giorno</h4>
     <canvas id="nuoviInfettiChart"></canvas>
     <hr class="py-4">
-    <h4 class="pb-2 text-center">Dimessi Guariti vs Deceduti per Giorno</h3>
+    <h4 class="pb-2 text-center">Dimessi Guariti vs Deceduti per Giorno</h4>
     <canvas id="dimessiVsDecedutiChart"></canvas>
   </section>
   <hr class="py-4">
   <p class="text-center"><small>Made by <a href="https://github.com/dan88v">dan88v</a> using <a href="https://www.chartjs.org/">Chart.js</a><br>
-  Data source: <a href="https://github.com/pcm-dpc/COVID-19">pcm-dpc</a></small></p>
+  Data source: <a href="https://github.com/pcm-dpc/COVID-19">pcm-dpc</a> relased under <a href="https://github.com/pcm-dpc/COVID-19/blob/master/LICENSE">Creative Commons Attribution 4.0 International License</a><br>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</small><br></p>
+  <p class="text-center"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
 </div>
 
 <script>
-  d3.csv('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale-latest.csv')
+  d3.csv('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv')
     .then(makeDashboard);
   function makeDashboard(a) {
 
-  $('span.ultimoAggiornamento').text(a[0].data);
-  $('span.totaleTamponi').text(a[0].tamponi);
-  $('span.totaleRicoverati').text(a[0].ricoverati_con_sintomi);
-  $('span.totaleGuariti').text(a[0].dimessi_guariti);
-  $('span.totaleDeceduti').text(a[0].deceduti);
-  $('span.totaleIsolamentoDomiciliare').text(a[0].isolamento_domiciliare);
-  $('span.totaleTerapiaIntensiva').text(a[0].terapia_intensiva);
+    var date = a.map(function(d) {return d.data});
+    var rcs = a.map(function(d) {return d.ricoverati_con_sintomi});
+    var ti = a.map(function(d) {return d.terapia_intensiva});
+    var id = a.map(function(d) {return d.isolamento_domiciliare});
+    var dg = a.map(function(d) {return d.dimessi_guariti});
+    var dec = a.map(function(d) {return d.deceduti});
+    var t = a.map(function(d) {return d.tamponi});
+
+  $('span.ultimoAggiornamento').text(date[(date.length)-1]);
+  $('span.totaleTamponi').text(t[(t.length)-1]);
+  $('span.totaleRicoverati').text(rcs[(rcs.length)-1]);
+  $('span.totaleGuariti').text(dg[(dg.length)-1]);
+  $('span.totaleDeceduti').text(dec[(dec.length)-1]);
+  $('span.totaleIsolamentoDomiciliare').text(id[(id.length)-1]);
+  $('span.totaleTerapiaIntensiva').text(ti[(ti.length)-1]);
+
+  //DELTA
+  var deltaTotaleTamponi = (t[(t.length)-1])-(t[(t.length)-2]);
+  if (deltaTotaleTamponi > 0) { 
+    deltaTotaleTamponi = "\u2bc5 " + deltaTotaleTamponi ;
+  } else if (deltaTotaleTamponi < 0) {
+    deltaTotaleTamponi = "\u2bc6 " + deltaTotaleTamponi;
+  }
+  $('span.deltaTotaleTamponi').text(deltaTotaleTamponi);
+
+  var deltaTotaleRicoverati = (rcs[(rcs.length)-1])-(rcs[(rcs.length)-2]);
+  if (deltaTotaleRicoverati > 0) { 
+    deltaTotaleRicoverati = "\u2bc5 " + deltaTotaleRicoverati ;
+  } else if (deltaTotaleRicoverati < 0) {
+    deltaTotaleRicoverati = "\u2bc6 " + deltaTotaleRicoverati;
+  }
+  $('span.deltaTotaleRicoverati').text(deltaTotaleRicoverati);
+
+  var deltaTotaleGuariti = (dg[(dg.length)-1])-(dg[(dg.length)-2]);
+  if (deltaTotaleGuariti > 0) { 
+    deltaTotaleGuariti = "\u2bc5 " + deltaTotaleGuariti ;
+  } else if (deltaTotaleGuariti < 0) {
+    deltaTotaleGuariti = "\u2bc6 " + deltaTotaleGuariti;
+  }
+  $('span.deltaTotaleGuariti').text(deltaTotaleGuariti);
+
+  var deltaTotaleDeceduti = (dec[(dec.length)-1])-(dec[(dec.length)-2]);
+  if (deltaTotaleDeceduti > 0) { 
+    deltaTotaleDeceduti = "\u2bc5 " + deltaTotaleDeceduti ;
+  } else if (deltaTotaleDeceduti < 0) {
+    deltaTotaleDeceduti = "\u2bc6 " + deltaTotaleDeceduti;
+  }
+  $('span.deltaTotaleDeceduti').text(deltaTotaleDeceduti);
+
+  var deltaTotaleIsolamentoDomiciliare = (id[(id.length)-1])-(id[(id.length)-2]);
+  if (deltaTotaleIsolamentoDomiciliare > 0) { 
+    deltaTotaleIsolamentoDomiciliare = "\u2bc5 " + deltaTotaleIsolamentoDomiciliare ;
+  } else if (deltaTotaleIsolamentoDomiciliare < 0) {
+    deltaTotaleIsolamentoDomiciliare = "\u2bc6 " + deltaTotaleIsolamentoDomiciliare;
+  }
+  $('span.deltaTotaleIsolamentoDomiciliare').text(deltaTotaleIsolamentoDomiciliare);
+
+  var deltaTotaleTerapiaIntensiva = (ti[(ti.length)-1])-(ti[(ti.length)-2]);
+  if (deltaTotaleTerapiaIntensiva > 0) { 
+    deltaTotaleTerapiaIntensiva = "\u2bc5 " + deltaTotaleTerapiaIntensiva ;
+  } else if (deltaTotaleTerapiaIntensiva < 0) {
+    deltaTotaleTerapiaIntensiva = "\u2bc6 " + deltaTotaleTerapiaIntensiva;
+  }
+  $('span.deltaTotaleTerapiaIntensiva').text(deltaTotaleTerapiaIntensiva);
 
   var labels = [
       'Ricoverati', 
@@ -86,15 +159,16 @@
       'Deceduti',
     ];
     var graphData = [
-      a[0].ricoverati_con_sintomi,
-      a[0].terapia_intensiva,
-      a[0].isolamento_domiciliare,
-      a[0].dimessi_guariti,
-      a[0].deceduti
+      rcs[(rcs.length)-1],
+      ti[(ti.length)-1],
+      id[(id.length)-1],
+      dg[(dg.length)-1],
+      dec[(dec.length)-1]
     ];
   
     var chart = new Chart('doughnut', {
       type: 'doughnut',
+      responsive: true,
       data: {
         labels: labels,
         datasets: [
