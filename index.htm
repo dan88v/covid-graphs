@@ -1,0 +1,153 @@
+<!doctype html>
+
+<html lang="it">
+<head>
+ <meta charset="utf-8">
+ <title></title>
+ <meta name="author" content="Daniele Trevisanello">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+
+ <style>
+   body { font-family: sans-serif; }
+   h1, h2, h3, p { text-align: center; }
+   hr { margin: 40px 0; }
+   section.main { width:90%; margin: 0 auto; }
+ </style>
+
+</head>
+
+<body>
+  <h1>Covid-19 - Situazione Italiana</h1>
+  <p>I dati vengono prelevati in automatico dal github della <a href="https://github.com/pcm-dpc/COVID-19">Presidenza del Consiglio dei Ministri - Dipartimento di Protezione Civile</a> pertanto sono sempre aggiornati.</p>
+  <hr>
+  <section class="main">
+    <h2>Situazione Nazionale Complessiva</h2>
+    <canvas id="situazioneNazionaleChart"></canvas>
+    <hr>
+    <h2>Nuovi Attualmente Positivi / Tamponi Effettuati per Giorno</h2>
+    <canvas id="nuoviInfettiChart"></canvas>
+  </section>
+
+<script>
+  d3.csv('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv')
+    .then(makeChart);
+  
+  function makeChart(a) {
+  
+    var labels = a.map(function(d) {return (d.data).substring(0,10)});
+    var rcs = a.map(function(d) {return d.ricoverati_con_sintomi});
+    var ti = a.map(function(d) {return d.terapia_intensiva});
+    var id = a.map(function(d) {return d.isolamento_domiciliare});
+    var dg = a.map(function(d) {return d.dimessi_guariti});
+    var dec = a.map(function(d) {return d.deceduti});
+
+    var chartData = {
+        labels: labels,
+        datasets: [{
+          label: 'Ricoverati con Sintomi',
+          data: rcs,
+          backgroundColor: '#d5c53b',
+			lineTension: 0
+        }, {
+          label: 'Terapia Intensiva',
+          data: ti,
+          backgroundColor: '#d5753b',
+			lineTension: 0
+        }, {
+          label: 'Isolamento Domiciliare',
+          data: id,
+          backgroundColor: '#3ba8d5',
+			lineTension: 0
+        }, {
+          label: 'Dimessi Guariti',
+          data: dg,
+          backgroundColor: '#3bd55f',
+			lineTension: 0
+        }, {
+          label: 'Deceduti',
+          data: dec,
+          backgroundColor: '#d53b3b',
+			lineTension: 0
+        }]
+      };
+  
+    var chart = new Chart('situazioneNazionaleChart', {
+      type: 'line',
+      data: chartData,
+      options: {
+        title: {
+            display: false,
+            text: 'Situazione Nazionale'
+          },
+          tooltips: {
+            mode: 'index',
+            intersect: false
+          },
+          responsive: true,
+          scales: {
+            xAxes: [{
+              stacked: true,
+            }],
+            yAxes: [{
+              stacked: true
+            }]
+          }
+        }
+    });
+  }
+  </script>
+
+<script>
+  d3.csv('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv')
+    .then(makeChart);
+  
+  function makeChart(a) {
+  
+    var labels = a.map(function(d) {return (d.data).substring(0,10)});
+    var ni = a.map(function(d) {return d.nuovi_attualmente_positivi});
+    var t = a.map(function(d) {return d.tamponi});
+    
+    var tgiorn = new Array;
+    for (var i=0;i<t.length;i++)
+    {
+      tgiorn[i] = t[i] - t[i-1];
+      if (i==0) tgiorn[i] = parseInt(t[i]);
+    }
+
+    console.log(t);
+    console.log(tgiorn);
+
+    var chartData = {
+        labels: labels,
+        datasets: [{
+          label: 'Nuovi Positivi',
+          data: ni,
+          backgroundColor: '#616161',
+        }, {
+          label: 'Tamponi',
+          data: tgiorn,
+          backgroundColor: '#72b1ff',
+        }]
+      };
+  
+    var chart = new Chart('nuoviInfettiChart', {
+      type: 'bar',
+      data: chartData,
+      options: {
+        title: {
+            display: false,
+            text: 'Nuovi Positivi'
+          },
+          tooltips: {
+            mode: 'index',
+            intersect: false
+          },
+          responsive: true,
+        }
+    });
+  }
+  </script>
+
+</body>
+</html>
