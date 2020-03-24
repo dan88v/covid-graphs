@@ -18,17 +18,22 @@
     <h2>Situazione Nazionale Complessiva</h2>
     <canvas id="situazioneNazionaleChart"></canvas>
     <hr>
-    <h2>Nuovi Attualmente Positivi / Tamponi Effettuati per Giorno</h2>
+    <h2>Nuovi Attualmente Positivi vs Tamponi Effettuati per Giorno</h2>
     <canvas id="nuoviInfettiChart"></canvas>
+    <hr>
+    <h2>Dimessi Guariti vs Deceduti per Giorno</h2>
+    <canvas id="dimessiVsDecedutiChart"></canvas>
   </section>
-
+  <hr>
+  <p><small>Made by <a href="https://github.com/dan88v">dan88v</a> using <a href="https://www.chartjs.org/">Chart.js</a></small></p>
+  <p><small>Data source: <a href="https://github.com/pcm-dpc/COVID-19">pcm-dpc</a></small></p>
 <script>
   d3.csv('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv')
     .then(makeChart);
   
   function makeChart(a) {
   
-    var labels = a.map(function(d) {return (d.data).substring(0,10)});
+    var labels = a.map(function(d) {return (d.data).substring(5,10)});
     var rcs = a.map(function(d) {return d.ricoverati_con_sintomi});
     var ti = a.map(function(d) {return d.terapia_intensiva});
     var id = a.map(function(d) {return d.isolamento_domiciliare});
@@ -89,7 +94,7 @@
         }
     });
   }
-  </script>
+</script>
 
 <script>
   d3.csv('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv')
@@ -97,7 +102,7 @@
   
   function makeChart(a) {
   
-    var labels = a.map(function(d) {return (d.data).substring(0,10)});
+    var labels = a.map(function(d) {return (d.data).substring(5,10)});
     var ni = a.map(function(d) {return d.nuovi_attualmente_positivi});
     var t = a.map(function(d) {return d.tamponi});
     
@@ -107,9 +112,6 @@
       tgiorn[i] = t[i] - t[i-1];
       if (i==0) tgiorn[i] = parseInt(t[i]);
     }
-
-    console.log(t);
-    console.log(tgiorn);
 
     var chartData = {
         labels: labels,
@@ -140,7 +142,65 @@
         }
     });
   }
-  </script>
+</script>
 
+<script>
+  d3.csv('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv')
+    .then(makeChart);
+  
+  function makeChart(a) {
+  
+    var labels = a.map(function(d) {return (d.data).substring(5,10)});
+
+    var dg = a.map(function(d) {return d.dimessi_guariti});
+    var dggiorn = new Array;
+    for (var i=0;i<dg.length;i++)
+    {
+      dggiorn[i] = dg[i] - dg[i-1];
+      if (i==0) dggiorn[i] = parseInt(dg[i]);
+    }
+
+    var dec = a.map(function(d) {return d.deceduti});
+    var decgiorn = new Array;
+    for (var i=0;i<dec.length;i++)
+    {
+      decgiorn[i] = dec[i] - dec[i-1];
+      if (i==0) decgiorn[i] = parseInt(dec[i]);
+    }
+
+    var chartData = {
+        labels: labels,
+        datasets: [{
+          label: 'Dimessi',
+          data: dggiorn,
+          fill: false,
+          borderColor: '#239942',
+			lineTension: 0.2
+        }, {
+          label: 'Deceduti',
+          data: decgiorn,
+          fill: false,
+          borderColor: '#992323',
+			lineTension: 0.2
+        }]
+      };
+  
+    var chart = new Chart('dimessiVsDecedutiChart', {
+      type: 'line',
+      data: chartData,
+      options: {
+        title: {
+            display: false,
+            text: 'Dimessi Guariti vs Deceduti per Giorno'
+          },
+          tooltips: {
+            mode: 'index',
+            intersect: false
+          },
+          responsive: true,
+        }
+    });
+  }
+  </script>
 </body>
 </html>
