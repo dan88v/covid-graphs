@@ -3,6 +3,7 @@
 <html lang="it">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>COVID-19 - Situazione Italiana - Graphs</title>
   <meta name="author" content="Daniele Trevisanello">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
@@ -32,30 +33,30 @@
 
         <p class="lead" style="color:#3ba8d5"><b>Isolamento Domiciliare</b><br>
         <span class="totaleIsolamentoDomiciliare h1"></span><br>
-        <small><b><span class="deltaTotaleIsolamentoDomiciliare"></span></b></small></p>
+        <small>(<b><span class="deltaTotaleIsolamentoDomiciliare"></span></b>)</small></p>
 
         <p class="lead" style="color:#d5753b"><b>Terapia Intensiva</b><br>
         <span class="totaleTerapiaIntensiva h1"></span><br>
-        <small><b><span class="deltaTotaleTerapiaIntensiva"></span></b></small></p>
+        <small>(<b><span class="deltaTotaleTerapiaIntensiva"></span></b>)</small></p>
 
         <p class="lead" style="color:#d5c53b"><b>Ricoverati</b><br>
         <span class="totaleRicoverati h1"></span><br>
-        <small><b><span class="deltaTotaleRicoverati"></span></b></small></p>
+        <small>(<b><span class="deltaTotaleRicoverati"></span></b>)</small></p>
 
       </div>
       <div class="col-sm-3 text-center">
 
         <p class="lead" style="color:#3bd55f"><b>Guariti</b><br>
         <span class="totaleGuariti h1"></span><br>
-        <small><b><span class="deltaTotaleGuariti"></span></b></small></p>
+        <small>(<b><span class="deltaTotaleGuariti"></span></b>)</small></p>
 
         <p class="lead" style="color:#d53b3b"><b>Deceduti</b><br>
         <span class="totaleDeceduti h1"></span><br>
-        <small><b><span class="deltaTotaleDeceduti"></span></b></small></p>
+        <small>(<b><span class="deltaTotaleDeceduti"></span></b>)</small></p>
 
         <p class="lead text-secondary"><b>Tamponi</b><br>
         <span class="totaleTamponi h1"></span><br>
-        <small><b><span class="deltaTotaleTamponi"></span></b></small></p>
+        <small>(<b><span class="deltaTotaleTamponi"></span></b>)</small></p>
 
       </div>
       <div class="col-sm-6">
@@ -105,49 +106,49 @@
   //DELTA
   var deltaTotaleTamponi = (t[(t.length)-1])-(t[(t.length)-2]);
   if (deltaTotaleTamponi > 0) { 
-    deltaTotaleTamponi = "\u2bc5 " + deltaTotaleTamponi ;
+    deltaTotaleTamponi = "+ " + deltaTotaleTamponi ;
   } else if (deltaTotaleTamponi < 0) {
-    deltaTotaleTamponi = "\u2bc6 " + deltaTotaleTamponi;
+    deltaTotaleTamponi = "- " + deltaTotaleTamponi;
   }
   $('span.deltaTotaleTamponi').text(deltaTotaleTamponi);
 
   var deltaTotaleRicoverati = (rcs[(rcs.length)-1])-(rcs[(rcs.length)-2]);
   if (deltaTotaleRicoverati > 0) { 
-    deltaTotaleRicoverati = "\u2bc5 " + deltaTotaleRicoverati ;
+    deltaTotaleRicoverati = "+ " + deltaTotaleRicoverati ;
   } else if (deltaTotaleRicoverati < 0) {
-    deltaTotaleRicoverati = "\u2bc6 " + deltaTotaleRicoverati;
+    deltaTotaleRicoverati = "- " + deltaTotaleRicoverati;
   }
   $('span.deltaTotaleRicoverati').text(deltaTotaleRicoverati);
 
   var deltaTotaleGuariti = (dg[(dg.length)-1])-(dg[(dg.length)-2]);
   if (deltaTotaleGuariti > 0) { 
-    deltaTotaleGuariti = "\u2bc5 " + deltaTotaleGuariti ;
+    deltaTotaleGuariti = "+ " + deltaTotaleGuariti ;
   } else if (deltaTotaleGuariti < 0) {
-    deltaTotaleGuariti = "\u2bc6 " + deltaTotaleGuariti;
+    deltaTotaleGuariti = "- " + deltaTotaleGuariti;
   }
   $('span.deltaTotaleGuariti').text(deltaTotaleGuariti);
 
   var deltaTotaleDeceduti = (dec[(dec.length)-1])-(dec[(dec.length)-2]);
   if (deltaTotaleDeceduti > 0) { 
-    deltaTotaleDeceduti = "\u2bc5 " + deltaTotaleDeceduti ;
+    deltaTotaleDeceduti = "+ " + deltaTotaleDeceduti ;
   } else if (deltaTotaleDeceduti < 0) {
-    deltaTotaleDeceduti = "\u2bc6 " + deltaTotaleDeceduti;
+    deltaTotaleDeceduti = "- " + deltaTotaleDeceduti;
   }
   $('span.deltaTotaleDeceduti').text(deltaTotaleDeceduti);
 
   var deltaTotaleIsolamentoDomiciliare = (id[(id.length)-1])-(id[(id.length)-2]);
   if (deltaTotaleIsolamentoDomiciliare > 0) { 
-    deltaTotaleIsolamentoDomiciliare = "\u2bc5 " + deltaTotaleIsolamentoDomiciliare ;
+    deltaTotaleIsolamentoDomiciliare = "+ " + deltaTotaleIsolamentoDomiciliare ;
   } else if (deltaTotaleIsolamentoDomiciliare < 0) {
-    deltaTotaleIsolamentoDomiciliare = "\u2bc6 " + deltaTotaleIsolamentoDomiciliare;
+    deltaTotaleIsolamentoDomiciliare = "- " + deltaTotaleIsolamentoDomiciliare;
   }
   $('span.deltaTotaleIsolamentoDomiciliare').text(deltaTotaleIsolamentoDomiciliare);
 
   var deltaTotaleTerapiaIntensiva = (ti[(ti.length)-1])-(ti[(ti.length)-2]);
   if (deltaTotaleTerapiaIntensiva > 0) { 
-    deltaTotaleTerapiaIntensiva = "\u2bc5 " + deltaTotaleTerapiaIntensiva ;
+    deltaTotaleTerapiaIntensiva = "+ " + deltaTotaleTerapiaIntensiva ;
   } else if (deltaTotaleTerapiaIntensiva < 0) {
-    deltaTotaleTerapiaIntensiva = "\u2bc6 " + deltaTotaleTerapiaIntensiva;
+    deltaTotaleTerapiaIntensiva = "- " + deltaTotaleTerapiaIntensiva;
   }
   $('span.deltaTotaleTerapiaIntensiva').text(deltaTotaleTerapiaIntensiva);
 
