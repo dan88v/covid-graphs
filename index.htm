@@ -214,6 +214,16 @@
     var chartData = {
         labels: labels,
         datasets: [{
+          label: 'Deceduti',
+          data: dec,
+          backgroundColor: '#d53b3b',
+			lineTension: 0
+        }, {
+          label: 'Dimessi Guariti',
+          data: dg,
+          backgroundColor: '#3bd55f',
+			lineTension: 0
+        }, {
           label: 'Ricoverati con Sintomi',
           data: rcs,
           backgroundColor: '#d5c53b',
@@ -227,16 +237,6 @@
           label: 'Isolamento Domiciliare',
           data: id,
           backgroundColor: '#3ba8d5',
-			lineTension: 0
-        }, {
-          label: 'Dimessi Guariti',
-          data: dg,
-          backgroundColor: '#3bd55f',
-			lineTension: 0
-        }, {
-          label: 'Deceduti',
-          data: dec,
-          backgroundColor: '#d53b3b',
 			lineTension: 0
         }]
       };
