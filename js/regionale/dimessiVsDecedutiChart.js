@@ -67,6 +67,8 @@ d3.csv('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/d
       type: 'line',
       data: chartData,
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         title: {
             display: false,
             text: 'Dimessi Guariti vs Deceduti per Giorno'

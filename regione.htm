@@ -121,20 +121,27 @@
   <hr class="py-4">
   <section>
     <h4 class="pb-2 text-center">Situazione Regionale <span class="nomeRegione"></span></h4>
-    <canvas id="situazioneRegionaleChart"></canvas>
+    <div class="chart-container">
+      <canvas id="situazioneRegionaleChart" class="chart-canvas"></canvas>
+    </div>
     <hr class="py-4">
     <h4 class="pb-2 text-center">Nuovi Attualmente Positivi vs Tamponi Effettuati per Giorno</h4>
-    <canvas id="nuoviInfettiChart"></canvas>
+    <div class="chart-container">
+      <canvas id="nuoviInfettiChart" class="chart-canvas"></canvas>
+    </div>
     <hr class="py-4">
     <h4 class="pb-2 text-center">Dimessi Guariti vs Deceduti vs Nuovi Ricoveri per Giorno</h4>
-    <canvas id="dimessiVsDecedutiChart"></canvas>
+    <div class="chart-container">
+      <canvas id="dimessiVsDecedutiChart" class="chart-canvas"></canvas>
+    </div>
     <hr class="py-4">
     <h4 class="pb-2 text-center">Totale Casi per Provincia in <span class="nomeRegione"></span></h4>
-    <canvas id="totaliPerProvincia"></canvas>
+    <div class="chart-container">
+      <canvas id="totaliPerProvincia" class="chart-canvas"></canvas>
+    </div>
   </section>
   <hr class="py-4">
   <p class="text-center"><small>Made by <a href="https://github.com/dan88v">dan88v</a> using <a href="https://www.chartjs.org/">Chart.js</a><br>
-    I dati ufficiali vengono rielaborati e non controllati, pertanto <strong>non</strong> si può garantirne l'affidabilità.<br>
     Data source: <a href="https://github.com/pcm-dpc/COVID-19">pcm-dpc</a> relased under <a href="https://github.com/pcm-dpc/COVID-19/blob/master/LICENSE">Creative Commons Attribution 4.0 International License</a><br>
   This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</small><br></p>
   <p class="text-center"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
