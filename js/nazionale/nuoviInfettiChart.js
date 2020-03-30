@@ -65,7 +65,7 @@ d3.csv('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento
 							id: 'y-axis-1',
               scaleLabel: {
                 display: true,
-                labelString: "Totale Persone"
+                labelString: "Totale"
               }
 						}, {
 							type: 'linear', 

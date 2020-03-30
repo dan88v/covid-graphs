@@ -23,17 +23,59 @@
 </head>
 
 <body>
-<nav class="navbar navbar-dark bg-dark sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
   <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <a class="navbar-brand text-light mb-0 h1">COVID-19 - Situazione Italiana</a>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.htm">Nazionale</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Regionale
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="regione.htm?regione=Abruzzo">Abruzzo</a>
+            <a class="dropdown-item" href="regione.htm?regione=Basilicata">Basilicata</a>
+            <a class="dropdown-item" href="regione.htm?regione=P.A. Bolzano">P.A. Bolzano</a>
+            <a class="dropdown-item" href="regione.htm?regione=Calabria">Calabria</a>
+            <a class="dropdown-item" href="regione.htm?regione=Campania">Campania</a>
+            <a class="dropdown-item" href="regione.htm?regione=Emilia Romagna">Emilia Romagna</a>
+            <a class="dropdown-item" href="regione.htm?regione=Friuli Venezia Giulia">Friuli Venezia Giulia</a>
+            <a class="dropdown-item" href="regione.htm?regione=Lazio">Lazio</a>
+            <a class="dropdown-item" href="regione.htm?regione=Liguria">Liguria</a>
+            <a class="dropdown-item" href="regione.htm?regione=Lombardia">Lombardia</a>
+            <a class="dropdown-item" href="regione.htm?regione=Marche">Marche</a>
+            <a class="dropdown-item" href="regione.htm?regione=Molise">Molise</a>
+            <a class="dropdown-item" href="regione.htm?regione=Piemonte">Piemonte</a>
+            <a class="dropdown-item" href="regione.htm?regione=Puglia">Puglia</a>
+            <a class="dropdown-item" href="regione.htm?regione=Sardegna">Sardegna</a>
+            <a class="dropdown-item" href="regione.htm?regione=Sicilia">Sicilia</a>
+            <a class="dropdown-item" href="regione.htm?regione=Toscana">Toscana</a>
+            <a class="dropdown-item" href="regione.htm?regione=P.A. Trento">Trento</a>
+            <a class="dropdown-item" href="regione.htm?regione=Umbria">Umbria</a>
+            <a class="dropdown-item" href="regione.htm?regione=Valle d'Aosta">Valle d'Aosta</a>
+            <a class="dropdown-item" href="regione.htm?regione=Veneto">Veneto</a>
+          </div>
+        </li>
+      </ul>
+    </div>
     <span class="navbar-text">
       <strong>Ultimo Aggiornamento:</strong> <span class="ultimoAggiornamento"></span>
     </span>
   </div>
 </nav>
-<div class="container">
-  <p class="pt-4 text-center">Questo <strong>NON</strong> è un sito ufficiale. I dati vengono prelevati in automatico dal github della <a href="https://github.com/pcm-dpc/COVID-19">Presidenza del Consiglio dei Ministri - Dipartimento di Protezione Civile</a> pertanto sono sempre aggiornati.</p>
-  <hr class="py-4">
+<div class="container py-4">
+  <div class="alert alert-info text-center" role="alert">
+   <strong>Attenzione!</strong> I dati sono ufficiali ma vengono rielaborati e non ricontrollati, pertanto <strong>non</strong> si può garantirne l'affidabilità al 100%.
+  </div>
+  <p class="pt-4 text-center">Questo <strong>NON</strong> è un sito ufficiale. I dati vengono prelevati in automatico dal github della <a href="https://github.com/pcm-dpc/COVID-19">Presidenza del Consiglio dei Ministri - Dipartimento di Protezione Civile</a> pertanto sono sempre aggiornati.
+    Sono stati aggiunti i dati per regione e per provincia. Selezionare la regione dall'apposito menu.</p>
+    <hr class="py-4">
  
   <section>
     <div class="row">
@@ -93,12 +135,11 @@
   <p class="text-center"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
 </div>
 
-<script src="js/dashboard.js"></script>
-<script src="js/situazioneNazionaleChart.js"></script>
-<script src="js/nuoviInfettiChart.js"></script>
-<script src="js/dimessiVsDecedutiChart.js"></script>
-<!--<script src="js/dimessiMenoNuoviRicoveriChart.js"></script>-->
-<script src="js/totaliPerRegioneChart.js"></script>
+<script src="js/nazionale/dashboard.js"></script>
+<script src="js/nazionale/situazioneNazionaleChart.js"></script>
+<script src="js/nazionale/nuoviInfettiChart.js"></script>
+<script src="js/nazionale/dimessiVsDecedutiChart.js"></script>
+<script src="js/nazionale/totaliPerRegioneChart.js"></script>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
