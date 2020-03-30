@@ -12,10 +12,10 @@ d3.csv('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/d
     var datiRegione = a.filter(function(d) { 
       return filterCriteria(d, regione)
     });
-
+    
+    var dr = datiRegione.map(function(d) {return d.denominazione_regione});
     var date = datiRegione.map(function(d) {return d.data});
     var rcs = datiRegione.map(function(d) {return d.ricoverati_con_sintomi});
-    var dr = datiRegione.map(function(d) {return d.denominazione_regione});
     var ti = datiRegione.map(function(d) {return d.terapia_intensiva});
     var id = datiRegione.map(function(d) {return d.isolamento_domiciliare});
     var dg = datiRegione.map(function(d) {return d.dimessi_guariti});
