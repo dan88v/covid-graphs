@@ -20,10 +20,10 @@ d3.csv('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/d
     a.sort(compare);
   
     var labels = a.map(function(d) {return (d.denominazione_regione)});
-    var tap = a.map(function(d) {return d.totale_attualmente_positivi});
+    var tap = a.map(function(d) {return d.totale_positivi});
     var dg = a.map(function(d) {return d.dimessi_guariti});
     var dec = a.map(function(d) {return d.deceduti});
-    var nap = a.map(function(d) {return d.nuovi_attualmente_positivi});
+    var nap = a.map(function(d) {return d.nuovi_positivi});
 
     var chartData = {
         labels: labels,

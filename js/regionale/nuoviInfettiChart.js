@@ -15,7 +15,7 @@ d3.csv('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/d
     });
   
     var labels = datiRegione.map(function(d) {return (d.data).substring(5,10)});
-    var ni = datiRegione.map(function(d) {return d.nuovi_attualmente_positivi});
+    var ni = datiRegione.map(function(d) {return d.nuovi_positivi});
     var t = datiRegione.map(function(d) {return d.tamponi});
     
     var tgiorn = new Array;

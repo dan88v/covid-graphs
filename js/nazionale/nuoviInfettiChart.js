@@ -4,7 +4,7 @@ d3.csv('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento
   function makeChart(a) {
   
     var labels = a.map(function(d) {return (d.data).substring(5,10)});
-    var ni = a.map(function(d) {return d.nuovi_attualmente_positivi});
+    var ni = a.map(function(d) {return d.nuovi_positivi});
     var t = a.map(function(d) {return d.tamponi});
     
     var tgiorn = new Array;
