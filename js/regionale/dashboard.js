@@ -34,49 +34,49 @@ d3.csv('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/d
   //DELTA
   var deltaTotaleTamponi = (t[(t.length)-1])-(t[(t.length)-2]);
   if (deltaTotaleTamponi > 0) { 
-    deltaTotaleTamponi = "+ " + deltaTotaleTamponi ;
+    deltaTotaleTamponi = "+" + deltaTotaleTamponi ;
   } else if (deltaTotaleTamponi < 0) {
-    deltaTotaleTamponi = "- " + deltaTotaleTamponi;
+    deltaTotaleTamponi = "" + deltaTotaleTamponi;
   }
   $('span.deltaTotaleTamponi').text(deltaTotaleTamponi);
 
   var deltaTotaleRicoverati = (rcs[(rcs.length)-1])-(rcs[(rcs.length)-2]);
   if (deltaTotaleRicoverati > 0) { 
-    deltaTotaleRicoverati = "+ " + deltaTotaleRicoverati ;
+    deltaTotaleRicoverati = "+" + deltaTotaleRicoverati ;
   } else if (deltaTotaleRicoverati < 0) {
-    deltaTotaleRicoverati = "- " + deltaTotaleRicoverati;
+    deltaTotaleRicoverati = "" + deltaTotaleRicoverati;
   }
   $('span.deltaTotaleRicoverati').text(deltaTotaleRicoverati);
 
   var deltaTotaleGuariti = (dg[(dg.length)-1])-(dg[(dg.length)-2]);
   if (deltaTotaleGuariti > 0) { 
-    deltaTotaleGuariti = "+ " + deltaTotaleGuariti ;
+    deltaTotaleGuariti = "+" + deltaTotaleGuariti ;
   } else if (deltaTotaleGuariti < 0) {
-    deltaTotaleGuariti = "- " + deltaTotaleGuariti;
+    deltaTotaleGuariti = "" + deltaTotaleGuariti;
   }
   $('span.deltaTotaleGuariti').text(deltaTotaleGuariti);
 
   var deltaTotaleDeceduti = (dec[(dec.length)-1])-(dec[(dec.length)-2]);
   if (deltaTotaleDeceduti > 0) { 
-    deltaTotaleDeceduti = "+ " + deltaTotaleDeceduti ;
+    deltaTotaleDeceduti = "+" + deltaTotaleDeceduti ;
   } else if (deltaTotaleDeceduti < 0) {
-    deltaTotaleDeceduti = "- " + deltaTotaleDeceduti;
+    deltaTotaleDeceduti = "" + deltaTotaleDeceduti;
   }
   $('span.deltaTotaleDeceduti').text(deltaTotaleDeceduti);
 
   var deltaTotaleIsolamentoDomiciliare = (id[(id.length)-1])-(id[(id.length)-2]);
   if (deltaTotaleIsolamentoDomiciliare > 0) { 
-    deltaTotaleIsolamentoDomiciliare = "+ " + deltaTotaleIsolamentoDomiciliare ;
+    deltaTotaleIsolamentoDomiciliare = "+" + deltaTotaleIsolamentoDomiciliare ;
   } else if (deltaTotaleIsolamentoDomiciliare < 0) {
-    deltaTotaleIsolamentoDomiciliare = "- " + deltaTotaleIsolamentoDomiciliare;
+    deltaTotaleIsolamentoDomiciliare = "" + deltaTotaleIsolamentoDomiciliare;
   }
   $('span.deltaTotaleIsolamentoDomiciliare').text(deltaTotaleIsolamentoDomiciliare);
 
   var deltaTotaleTerapiaIntensiva = (ti[(ti.length)-1])-(ti[(ti.length)-2]);
   if (deltaTotaleTerapiaIntensiva > 0) { 
-    deltaTotaleTerapiaIntensiva = "+ " + deltaTotaleTerapiaIntensiva ;
+    deltaTotaleTerapiaIntensiva = "+" + deltaTotaleTerapiaIntensiva ;
   } else if (deltaTotaleTerapiaIntensiva < 0) {
-    deltaTotaleTerapiaIntensiva = "- " + deltaTotaleTerapiaIntensiva;
+    deltaTotaleTerapiaIntensiva = "" + deltaTotaleTerapiaIntensiva;
   }
   $('span.deltaTotaleTerapiaIntensiva').text(deltaTotaleTerapiaIntensiva);
 
