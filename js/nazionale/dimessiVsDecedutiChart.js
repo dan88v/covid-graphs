@@ -44,7 +44,7 @@ d3.csv('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento
           borderColor: '#992323',
 			  lineTension: 0.2
         }, {
-          label: 'Nuovi Ricoveri',
+          label: 'Variazione Ricoveri',
           data: togiorn,
           fill: false,
           borderColor: '#eb834b',
