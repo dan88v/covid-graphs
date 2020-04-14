@@ -24,12 +24,12 @@ d3.csv('https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/d
 
   $('span.nomeRegione').text(dr[0]);
   $('span.ultimoAggiornamento').text(date[(date.length)-1]);
-  $('span.totaleTamponi').text(t[(t.length)-1]);
-  $('span.totaleRicoverati').text(rcs[(rcs.length)-1]);
-  $('span.totaleGuariti').text(dg[(dg.length)-1]);
-  $('span.totaleDeceduti').text(dec[(dec.length)-1]);
-  $('span.totaleIsolamentoDomiciliare').text(id[(id.length)-1]);
-  $('span.totaleTerapiaIntensiva').text(ti[(ti.length)-1]);
+  $('span.totaleTamponi').text(Number(t[(t.length)-1]).toLocaleString());
+  $('span.totaleRicoverati').text(Number(rcs[(rcs.length)-1]).toLocaleString());
+  $('span.totaleGuariti').text(Number(dg[(dg.length)-1]).toLocaleString());
+  $('span.totaleDeceduti').text(Number(dec[(dec.length)-1]).toLocaleString());
+  $('span.totaleIsolamentoDomiciliare').text(Number(id[(id.length)-1]).toLocaleString());
+  $('span.totaleTerapiaIntensiva').text(Number(ti[(ti.length)-1]).toLocaleString());
 
   //DELTA
   var deltaTotaleTamponi = (t[(t.length)-1])-(t[(t.length)-2]);
